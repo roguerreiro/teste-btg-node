@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS users (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    username TEXT NOT NULL UNIQUE,
+    otp_secret TEXT NOT NULL
+);
