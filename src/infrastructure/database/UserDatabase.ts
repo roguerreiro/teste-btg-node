@@ -1,4 +1,4 @@
-import { User } from '../models/User';
+import { User } from '../../models/User';
 
 export interface UserDatabase {
     registerUser(username: string): Promise<number>;

@@ -1,6 +1,6 @@
 import { UserDatabase } from './UserDatabase';
 import { SqlDatabase } from './SqlDatabase';
-import { User } from '../models/User';
+import { User } from '../../models/User';
 
 export class SqlUserDatabase extends SqlDatabase implements UserDatabase {
     async registerUser(username: string): Promise<number> {
