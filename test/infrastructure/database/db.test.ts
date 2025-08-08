@@ -1,8 +1,8 @@
-import { SqlDatabase } from '../src/infrastructure/database/SqlDatabase';
+import { SqlDatabase } from '../../../src/infrastructure/database/SqlDatabase';
 import fs from 'fs';
 import path from 'path';
 
-const dbSchema = path.resolve(__dirname, '../src/infrastructure/database/init.sql');
+const dbSchema = path.resolve(__dirname, '../../../src/infrastructure/database/init.sql');
 const dbLocation = path.resolve(__dirname, './test.db');
 
 describe('SQL Database', () => {

@@ -1,8 +1,8 @@
-import { SqlUserDatabase } from '../src/infrastructure/database/SqlUserDatabase';
+import { SqlUserDatabase } from '../../../src/infrastructure/database/SqlUserDatabase';
 import fs from 'fs';
 import path from 'path';
 
-const dbSchema = path.resolve(__dirname, '../src/infrastructure/database/init.sql');
+const dbSchema = path.resolve(__dirname, '../../../src/infrastructure/database/init.sql');
 const dbLocation = path.resolve(__dirname, './usertest.db');
 
 describe('SQL Database', () => {
@@ -19,14 +19,14 @@ describe('SQL Database', () => {
         expect(result).toBe(true);
     });
 
-    test('should add two users to the database', () => {
+    test('should add two users to the database', async () => {
         const username = 'testuser';
-        const result = db.registerUser(username);
-        expect(result).resolves.toBe(1);
+        const result = await db.registerUser(username);
+        expect(result).toBe(1);
 
         const username2 = 'testusertwo';
-        const result2 = db.registerUser(username2);
-        expect(result2).resolves.toBe(2);
+        const result2 = await db.registerUser(username2);
+        expect(result2).toBe(2);
     });
 
     test('should return a User object from a given username, be null otherwise', async () => {

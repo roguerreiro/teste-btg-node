@@ -11,6 +11,7 @@ export class SqlUserDatabase extends SqlDatabase implements UserDatabase {
 
         return super.readFromTable('users', { 'username': username }).then((rows) => {
             if (rows.length > 0) {
+                console.log('User registered:', rows[0]);
                 return rows[0].id;
             }
             throw new Error('User registration failed');
