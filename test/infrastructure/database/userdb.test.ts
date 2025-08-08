@@ -21,11 +21,12 @@ describe('SQL Database', () => {
 
     test('should add two users to the database', async () => {
         const username = 'testuser';
-        const result = await db.registerUser(username);
+        const otp_secret = 'placeholder_secret';
+        const result = await db.registerUser(username, otp_secret);
         expect(result).toBe(1);
 
         const username2 = 'testusertwo';
-        const result2 = await db.registerUser(username2);
+        const result2 = await db.registerUser(username2, otp_secret);
         expect(result2).toBe(2);
     });
 

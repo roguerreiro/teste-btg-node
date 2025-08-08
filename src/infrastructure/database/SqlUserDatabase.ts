@@ -3,10 +3,10 @@ import { SqlDatabase } from './SqlDatabase';
 import { User } from '../../models/User';
 
 export class SqlUserDatabase extends SqlDatabase implements UserDatabase {
-    async registerUser(username: string): Promise<number> {
+    async registerUser(username: string, otp_secret: string): Promise<number> {
         super.addToTable('users', {
             username: username,
-            otp_secret: '0' // placeholder for OTP logic
+            otp_secret: otp_secret
         });
 
         return super.readFromTable('users', { 'username': username }).then((rows) => {
