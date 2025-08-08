@@ -9,28 +9,28 @@ describe('TOTP Manager', () => {
 
     test('should generate a TOTP token', async () => {
         const secret = 'testsecret';
-        const token = await totpManager.generateTOTP(secret);
+        const token = await totpManager.generateOTP(secret);
         expect(token).toBeDefined();
     });
 
     test('should verify a valid TOTP token', async () => {
         const secret = 'testsecret';
-        const token = await totpManager.generateTOTP(secret);
-        const isValid = await totpManager.verifyTOTP(token, secret);
+        const token = await totpManager.generateOTP(secret);
+        const isValid = await totpManager.verifyOTP(token, secret);
         expect(isValid).toBe(true);
     });
 
     test('should not verify an invalid TOTP token', async () => {
         const secret = 'testsecret';
-        const isValid = await totpManager.verifyTOTP('invalidtoken', secret);
+        const isValid = await totpManager.verifyOTP('invalidtoken', secret);
         expect(isValid).toBe(false);
     });
 
     test('should not verify an expired TOTP token', async () => {
         const secret = 'testsecret';
-        const token = await totpManager.generateTOTP(secret);
+        const token = await totpManager.generateOTP(secret);
         await new Promise(resolve => setTimeout(resolve, 6000));
-        const isValid = await totpManager.verifyTOTP(token, secret);
+        const isValid = await totpManager.verifyOTP(token, secret);
         expect(isValid).toBe(false);
     }, 8000);
 
@@ -41,8 +41,8 @@ describe('TOTP Manager', () => {
 
     test('should verify a valid TOTP token with newly generated secret', async () => {
         const secret = await totpManager.generateSecret();
-        const token = await totpManager.generateTOTP(secret);
-        const isValid = await totpManager.verifyTOTP(token, secret);
+        const token = await totpManager.generateOTP(secret);
+        const isValid = await totpManager.verifyOTP(token, secret);
         expect(isValid).toBe(true);
     });
 

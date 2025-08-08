@@ -23,4 +23,8 @@ export class User {
         return this.username;
     }
 
+    getSecret(): string {
+        return this.secret;
+    }
+
 }

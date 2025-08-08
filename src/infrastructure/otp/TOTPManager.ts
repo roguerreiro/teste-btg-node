@@ -14,11 +14,11 @@ export class TOTPManager implements OTPManager {
         return authenticator.generateSecret();
     }
 
-    async generateTOTP(secret: string): Promise<string> {
+    async generateOTP(secret: string): Promise<string> {
         return authenticator.generate(secret);
     }
 
-    async verifyTOTP(token: string, secret: string): Promise<boolean> {
+    async verifyOTP(token: string, secret: string): Promise<boolean> {
         return authenticator.check(token, secret);
     }
 

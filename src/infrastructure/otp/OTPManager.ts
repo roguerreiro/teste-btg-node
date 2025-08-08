@@ -1,5 +1,5 @@
 export interface OTPManager {
     generateSecret(): Promise<string>;
-    generateTOTP(secret: string): Promise<string>;
-    verifyTOTP(token: string, secret: string): Promise<boolean>;
+    generateOTP(secret: string): Promise<string>;
+    verifyOTP(token: string, secret: string): Promise<boolean>;
 }
