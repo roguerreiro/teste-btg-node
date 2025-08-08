@@ -10,6 +10,10 @@ export class TOTPManager implements OTPManager {
         }
     }
 
+    async generateSecret(): Promise<string> {
+        return authenticator.generateSecret();
+    }
+
     async generateTOTP(secret: string): Promise<string> {
         return authenticator.generate(secret);
     }

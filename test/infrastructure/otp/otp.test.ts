@@ -32,7 +32,18 @@ describe('TOTP Manager', () => {
         await new Promise(resolve => setTimeout(resolve, 6000));
         const isValid = await totpManager.verifyTOTP(token, secret);
         expect(isValid).toBe(false);
-    },
-    8000);
+    }, 8000);
+
+    test('should generate a secret', async () => {
+        const secret = await totpManager.generateSecret();
+        expect(secret).toBeDefined();
+    });
+
+    test('should verify a valid TOTP token with newly generated secret', async () => {
+        const secret = await totpManager.generateSecret();
+        const token = await totpManager.generateTOTP(secret);
+        const isValid = await totpManager.verifyTOTP(token, secret);
+        expect(isValid).toBe(true);
+    });
 
 });
