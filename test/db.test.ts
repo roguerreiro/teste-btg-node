@@ -3,7 +3,6 @@ import fs from 'fs';
 import path from 'path';
 
 const dbSchema = path.resolve(__dirname, '../src/database/init.sql');
-console.log(dbSchema);
 const dbLocation = path.resolve(__dirname, './test.db');
 
 describe('SQL Database', () => {
@@ -20,9 +19,9 @@ describe('SQL Database', () => {
         expect(result).toBe(true);
     });
 
-    test('should add data to a table', () => {
+    test('should add data to a table', async () => {
         const data = { username: 'testuser', otp_secret: '2' };
-        const result = db.addToTable('users', data);
+        const result = await db.addToTable('users', data);
         expect(result).toBe(true);
     });
 
@@ -33,7 +32,8 @@ describe('SQL Database', () => {
         expect(result.length).toBeGreaterThan(0);
         expect(result[0].username).toBe('testuser');
         expect(result[0].otp_secret).toBe('2');
-    });
+    });    
+
 
     afterAll(async () => {
         await db.close();

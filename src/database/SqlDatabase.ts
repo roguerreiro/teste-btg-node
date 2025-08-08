@@ -34,7 +34,7 @@ export class SqlDatabase {
         });
     }
 
-    addToTable(table: string, data: Record<string, any>): boolean {
+    async addToTable(table: string, data: Record<string, any>): Promise<boolean> {
         const keys = Object.keys(data);
         const values = Object.values(data);
         const placeholders = keys.map(() => '?').join(', ');
