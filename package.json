@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "ts-node src/app.ts"
   },
   "repository": {
     "type": "git",
@@ -18,13 +19,14 @@
   },
   "homepage": "https://github.com/roguerreiro/teste-btg-node#readme",
   "dependencies": {
+    "express": "^5.1.0",
     "otplib": "^12.0.1",
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {
     "@types/express": "^5.0.3",
     "@types/jest": "^30.0.0",
-    "@types/node": "^24.2.0",
+    "@types/node": "^24.2.1",
     "@types/sqlite3": "^3.1.11",
     "@types/supertest": "^6.0.3",
     "jest": "^30.0.5",
