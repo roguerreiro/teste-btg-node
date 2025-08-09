@@ -1,5 +1,4 @@
 import express from 'express';
-
 import { generateToken } from '../services/generateToken';
 import { validateToken } from '../services/validateToken';
 import { UserDatabase } from '../infrastructure/database/UserDatabase';
